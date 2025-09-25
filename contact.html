@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Contact - Hospital</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+  /* Navbar links hover */
+  #navbar a {
+    transition: all 0.3s ease;
+    border-radius: 8px;
+    padding: 6px 12px;
+  }
+
+  #navbar a:hover {
+    background: rgba(255, 255, 255, 0.25); /* subtle light overlay */
+    color: #fff; /* keep text white */
+    transform: scale(1.1); /* slight zoom */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  }
+</style>
+</head>
+
+<body>
+  <nav id="navbar" style="
+  display:flex; 
+  align-items:center; 
+  justify-content:space-between; 
+  padding:14px 28px; 
+  position:sticky; 
+  top:0; 
+  z-index:1000;
+  background: linear-gradient(90deg, #8e2de2, #ff416c); /* default gradient */
+  border-radius: 14px;
+  transition: all 0.4s ease;
+">
+  <div style="display:flex;align-items:center;gap:12px;">
+    <img src="./images/logo.webp" style="width:48px;height:48px;object-fit:contain;border-radius:8px;box-shadow:0 3px 8px rgba(0,0,0,0.25);">
+    <span style="font-weight:bold;color:rgb(255, 251, 251);font-size:20px;"> 𝕿𝖗𝖚𝖘𝖙 𝖍𝖊𝖆𝖑𝖎𝖓𝖌</span>
+  </div>
+  <div style="display:flex;gap:20px;">
+    <a href="home.html" style="color:white;text-decoration:none;">Home</a>
+    <a href="appoinment.html" style="color:white;text-decoration:none;">Appointment</a>
+    <a href="doctors.html" style="color:white;text-decoration:none;">Doctors</a>
+    <a href="departments.html" style="color:white;text-decoration:none;">Departments</a>
+    <a href="about.html" style="color:white;text-decoration:none;">About</a>
+    <a href="contact.html" style="color:white;text-decoration:none;">Contact</a>
+  </div>
+</nav>
+
+<script>
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    if(window.scrollY > 50){
+      navbar.style.backdropFilter = 'blur(12px) saturate(160%)';
+      navbar.style.webkitBackdropFilter = 'blur(12px) saturate(160%)';
+      navbar.style.background = 'linear-gradient(90deg, rgba(50,0,80,0.55), rgba(120,0,80,0.45), rgba(255,120,50,0.35))';
+      navbar.style.border = '1px solid rgba(255,255,255,0.18)';
+      navbar.style.boxShadow = '0 8px 28px rgba(0,0,0,0.35)';
+    } else {
+      navbar.style.backdropFilter = '';
+      navbar.style.webkitBackdropFilter = '';
+      navbar.style.background = 'linear-gradient(90deg, #8e2de2, #ff416c)'; // original gradient
+      navbar.style.border = '';
+      navbar.style.boxShadow = '';
+    }
+  });
+</script>
+
+
+ 
+    <!-- Hero Section -->
+    <section class="hero-contact">
+        <div class="hero-content">
+            <h1></h1>
+        </div>
+    </section>
+
+    <!-- Contact Info Section -->
+    <section class="contact-info">
+        <div class="info-box">
+            <h3>Address</h3>
+            <p>123 Health Street, North Street, Kumbakonam</p>
+        </div>
+        <div class="info-box">
+            <h3>Phone</h3>
+            <p>+91 98765 43210</p>
+        </div>
+        <div class="info-box">
+            <h3>Email</h3>
+            <p>info@hospital.com</p>
+        </div>
+    </section>
+
+    <!-- Contact Form Section -->
+    <section class="contact-form-section">
+        <h2>Send Us a Message</h2>
+        <form action="#" method="post" class="contact-form">
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="email" name="email" placeholder="Your Email" required>
+            <input type="text" name="subject" placeholder="Subject" required>
+            <textarea name="message" rows="6" placeholder="Your Message" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+    </section>
+
+
+
+    <!-- Footer Section -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2025 Hospital Management. All rights reserved.</p>
+            
+        </div>
+    </footer>
+
+
+
+
+
+    <script>
+
+        if (!sessionStorage.getItem("loggedIn")) {
+            window.location.href = "login.html";
+        }
+    </script>
+
+</body>
+
+</html>

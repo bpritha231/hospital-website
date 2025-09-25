@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Home - Hospital</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+  /* Navbar links hover */
+  #navbar a {
+    transition: all 0.3s ease;
+    border-radius: 8px;
+    padding: 6px 12px;
+  }
+
+  #navbar a:hover {
+    background: rgba(255, 255, 255, 0.25); /* subtle light overlay */
+    color: #fff; /* keep text white */
+    transform: scale(1.1); /* slight zoom */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  }
+</style>
+</head>
+
+<body>
+    <nav id="navbar" style="
+  display:flex; 
+  align-items:center; 
+  justify-content:space-between; 
+  padding:14px 28px; 
+  position:sticky; 
+  top:0; 
+  z-index:1000;
+  background: linear-gradient(90deg, #8e2de2, #ff416c); /* default gradient */
+  border-radius: 14px;
+  transition: all 0.4s ease;
+">
+  <div style="display:flex;align-items:center;gap:12px;">
+    <img src="./images/logo.webp" style="width:48px;height:48px;object-fit:contain;border-radius:8px;box-shadow:0 3px 8px rgba(0,0,0,0.25);">
+    <span style="font-weight:bold;color:rgb(252, 250, 250);font-size:20px;"> 𝕿𝖗𝖚𝖘𝖙 𝖍𝖊𝖆𝖑𝖎𝖓𝖌</span>
+  </div>
+  <div style="display:flex;gap:20px;">
+    <a href="home.html" style="color:white;text-decoration:none;">Home</a>
+    <a href="appoinment.html" style="color:white;text-decoration:none;">Appointment</a>
+    <a href="doctors.html" style="color:white;text-decoration:none;">Doctors</a>
+    <a href="departments.html" style="color:white;text-decoration:none;">Departments</a>
+    <a href="about.html" style="color:white;text-decoration:none;">About</a>
+    <a href="contact.html" style="color:white;text-decoration:none;">Contact</a>
+  </div>
+</nav>
+
+<script>
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    if(window.scrollY > 50){
+      navbar.style.backdropFilter = 'blur(12px) saturate(160%)';
+      navbar.style.webkitBackdropFilter = 'blur(12px) saturate(160%)';
+      navbar.style.background = 'linear-gradient(90deg, rgba(50,0,80,0.55), rgba(120,0,80,0.45), rgba(255,120,50,0.35))';
+      navbar.style.border = '1px solid rgba(255,255,255,0.18)';
+      navbar.style.boxShadow = '0 8px 28px rgba(0,0,0,0.35)';
+    } else {
+      navbar.style.backdropFilter = '';
+      navbar.style.webkitBackdropFilter = '';
+      navbar.style.background = 'linear-gradient(90deg, #8e2de2, #ff416c)'; // original gradient
+      navbar.style.border = '';
+      navbar.style.boxShadow = '';
+    }
+  });
+</script>
+
+
+ 
+
+
+
+
+    <!-- Hero Section -->
+    <section class="hero-doctors">
+        <div class="hero-content">
+            <h1></h1>
+            <p></p>
+        </div>
+    </section>
+
+    <!-- Search & Filter -->
+    <section class="filter-section">
+        <input type="text" id="searchInput" placeholder="Search by name or specialization..." onkeyup="filterDoctors()">
+        <select id="specializationFilter" onchange="filterDoctors()">
+            <option value="">All Specializations</option>
+            <option value="Cardiologist">Cardiologist</option>
+            <option value="Pediatrician">Pediatrician</option>
+            <option value="Surgeon">Surgeon</option>
+            <option value="Neurologist">Neurologist</option>
+        </select>
+    </section>
+
+    <!-- Doctors Section -->
+    <section class="doctors-section">
+        <div class="doctors-container" id="doctorsContainer">
+
+            <!-- Doctor Card Template -->
+            <div class="doctor-card" data-name="Dr. Sutharsan" data-spec="Surgeon">
+                <img src="./images/download 1.jpg" alt="Dr. Sutharsan">
+                <h3>Dr. Sutharsan</h3>
+                <p>Chief Surgeon</p>
+                <div class="doctor-actions">
+                    <button onclick="openModal('Dr. Sutharsan')">View Profile</button>
+                    <button onclick="bookAppointment('Dr. Sutharsan')">Book Appointment</button>
+                    <button onclick="getToken('Dr. Sutharsan')">Get Token</button>
+                </div>
+            </div>
+
+            <div class="doctor-card" data-name="Dr. Priya" data-spec="Cardiologist">
+                <img src="./images/download3.jpg" alt="Dr. Priya">
+                <h3>Dr. Priya</h3>
+                <p>Cardiologist</p>
+                <div class="doctor-actions">
+                    <button onclick="openModal('Dr. Priya')">View Profile</button>
+                    <button onclick="bookAppointment('Dr. Priya')">Book Appointment</button>
+                    <button onclick="getToken('Dr. Priya')">Get Token</button>
+                </div>
+            </div>
+
+            <div class="doctor-card" data-name="Dr. Ramesh" data-spec="Pediatrician">
+                <img src="./images/download2.jpg" alt="Dr. Ramesh">
+                <h3>Dr. Ramesh</h3>
+                <p>Pediatrician</p>
+                <div class="doctor-actions">
+                    <button onclick="openModal('Dr. Ramesh')">View Profile</button>
+                    <button onclick="bookAppointment('Dr. Ramesh')">Book Appointment</button>
+                    <button onclick="getToken('Dr. Ramesh')">Get Token</button>
+                </div>
+            </div>
+
+            <div class="doctor-card" data-name="Dr. Anitha" data-spec="Neurologist">
+                <img src="./images/download 4.jpg" alt="Dr. Anitha">
+                <h3>Dr. Anitha</h3>
+                <p>Neurologist</p>
+                <div class="doctor-actions">
+                    <button onclick="openModal('Dr. Anitha')">View Profile</button>
+                    <button onclick="bookAppointment('Dr. Anitha')">Book Appointment</button>
+                    <button onclick="getToken('Dr. Anitha')">Get Token</button>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Profile Modal -->
+    <div id="profileModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2 id="modalDoctorName"></h2>
+            <p id="modalDoctorSpec"></p>
+            <h3>Experience & Education</h3>
+            <p id="modalDoctorBio"></p>
+            <h3>Weekly Availability</h3>
+            <table id="modalSchedule">
+                <tr>
+                    <th>Day</th>
+                    <th>Time</th>
+                </tr>
+            </table>
+            <h3>Online Consultation</h3>
+            <p><a href="#" id="modalConsultLink" target="_blank">Join Online Session</a></p>
+            <h3>Reviews</h3>
+            <div id="modalReviews">
+                <!-- Reviews will appear here -->
+            </div>
+            <div>
+                <h4>Leave a Review</h4>
+                <input type="text" id="reviewName" placeholder="Your Name">
+                <textarea id="reviewText" rows="3" placeholder="Write a review..."></textarea>
+                <label>Rating:
+                    <select id="reviewRating">
+                        <option value="5">5 ⭐</option>
+                        <option value="4">4 ⭐</option>
+                        <option value="3">3 ⭐</option>
+                        <option value="2">2 ⭐</option>
+                        <option value="1">1 ⭐</option>
+                    </select>
+                </label>
+                <button onclick="submitReview()">Submit</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2025 Hospital Management. All rights reserved.</p>
+
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Doctor Data
+        const doctors = {
+            "Dr. Sutharsan": {
+                spec: "Chief Surgeon",
+                bio: "15+ years of surgical experience. Expert in complex surgeries and patient care.",
+                schedule: {
+                    Monday: "10:00 - 16:00",
+                    Wednesday: "10:00 - 16:00",
+                    Friday: "12:00 - 18:00"
+                },
+                consultLink: "#",
+                reviews: []
+            },
+            "Dr. Priya": {
+                spec: "Cardiologist",
+                bio: "Specialized in heart diseases. Experienced in advanced cardiac procedures.",
+                schedule: {
+                    Tuesday: "09:00 - 15:00",
+                    Thursday: "11:00 - 17:00"
+                },
+                consultLink: "#",
+                reviews: []
+            },
+            "Dr. Ramesh": {
+                spec: "Pediatrician",
+                bio: "Passionate about children's health. 10+ years of pediatric care.",
+                schedule: {
+                    Monday: "08:00 - 14:00",
+                    Wednesday: "08:00 - 14:00",
+                    Friday: "10:00 - 16:00"
+                },
+                consultLink: "#",
+                reviews: []
+            },
+            "Dr. Anitha": {
+                spec: "Neurologist",
+                bio: "Expert in brain and nervous system treatments. 12+ years experience.",
+                schedule: {
+                    Tuesday: "10:00 - 16:00",
+                    Thursday: "10:00 - 16:00"
+                },
+                consultLink: "#",
+                reviews: []
+            }
+        };
+
+        // Filter doctors
+        function filterDoctors() {
+            const searchValue = document.getElementById("searchInput").value.toLowerCase();
+            const specValue = document.getElementById("specializationFilter").value;
+            const container = document.getElementById("doctorsContainer");
+            const cards = container.getElementsByClassName("doctor-card");
+            for (let card of cards) {
+                const name = card.dataset.name.toLowerCase();
+                const spec = card.dataset.spec;
+                if ((name.includes(searchValue) || spec.toLowerCase().includes(searchValue)) &&
+                    (specValue === "" || spec === specValue)) {
+                    card.style.display = "block";
+                } else {
+                    card.style.display = "none";
+                }
+            }
+        }
+
+        // Modal
+        const modal = document.getElementById("profileModal");
+        let currentDoctor = null;
+        function openModal(name) {
+            currentDoctor = doctors[name];
+            document.getElementById("modalDoctorName").innerText = name;
+            document.getElementById("modalDoctorSpec").innerText = currentDoctor.spec;
+            document.getElementById("modalDoctorBio").innerText = currentDoctor.bio;
+            const scheduleTable = document.getElementById("modalSchedule");
+            scheduleTable.innerHTML = "<tr><th>Day</th><th>Time</th></tr>";
+            for (let day in currentDoctor.schedule) {
+                let row = scheduleTable.insertRow();
+                row.insertCell(0).innerText = day;
+                row.insertCell(1).innerText = currentDoctor.schedule[day];
+            }
+            document.getElementById("modalConsultLink").href = currentDoctor.consultLink;
+            displayReviews();
+            modal.style.display = "block";
+        }
+
+        function closeModal() {
+            modal.style.display = "none";
+        }
+
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+
+        // Appointments
+        function bookAppointment(name) {
+            const date = prompt(`Enter appointment date for ${name} (YYYY-MM-DD):`);
+            const time = prompt(`Enter appointment time for ${name} (HH:MM):`);
+            if (date && time) {
+                alert(`Appointment confirmed with ${name} on ${date} at ${time}`);
+            }
+        }
+
+        // Token
+        function getToken(name) {
+            const token = Math.floor(Math.random() * 100) + 1;
+            alert(`Your token for ${name} is: ${token}`);
+        }
+
+        // Reviews
+        function submitReview() {
+            const reviewer = document.getElementById("reviewName").value;
+            const text = document.getElementById("reviewText").value;
+            const rating = document.getElementById("reviewRating").value;
+            if (reviewer && text) {
+                currentDoctor.reviews.push({ name: reviewer, text: text, rating: rating });
+                displayReviews();
+                document.getElementById("reviewName").value = "";
+                document.getElementById("reviewText").value = "";
+                alert("Review submitted!");
+            }
+        }
+
+        function displayReviews() {
+            const container = document.getElementById("modalReviews");
+            container.innerHTML = "";
+            currentDoctor.reviews.forEach(r => {
+                const div = document.createElement("div");
+                div.innerHTML = `<strong>${r.name}</strong> (${r.rating} ⭐): ${r.text}`;
+                div.style.borderBottom = "1px solid #ccc";
+                div.style.padding = "5px 0";
+                container.appendChild(div);
+            });
+        }
+
+    </script>
+
+
+
+    <script>
+        if (!sessionStorage.getItem("loggedIn")) {
+            window.location.href = "login.html";
+        }
+    </script>
+
+</body>
+
+</html>

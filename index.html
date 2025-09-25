@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Hospital Login</title>
+  <style>
+    :root{
+      --accent:#1e90ff;
+      --glass-bg: rgba(153, 231, 231, 0.568);
+      --glass-border: rgba(128, 200, 233, 0.18);
+      --card-radius: 16px;
+    }
+
+    /* Full page bg image */
+    html,body{
+      height:100%;
+      margin:0;
+      font-family: "Segoe UI", Roboto, Arial, sans-serif;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+    }
+
+    body{
+      background: url('./images/loginpg.jpg') center/cover no-repeat fixed;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      position:relative;
+      color:#fff;
+    }
+
+    /* subtle dark overlay to increase contrast */
+    .bg-overlay{
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(0,0,0,0.35), rgba(0,0,0,0.55));
+      z-index:0;
+    }
+
+    /* login card */
+    .login-card{
+      position: relative;
+      z-index:2;
+      width: 360px;
+      max-width: calc(100% - 40px);
+      padding: 28px;
+      border-radius: var(--card-radius);
+      backdrop-filter: blur(8px) saturate(120%);
+      -webkit-backdrop-filter: blur(8px) saturate(120%);
+      background: linear-gradient(135deg, rgb(110, 154, 161), rgba(64, 102, 107, 0.849));
+      border: 1px solid var(--glass-border);
+      box-shadow: 0 10px 30px rgba(2,6,23,0.55);
+      animation: drop 400ms cubic-bezier(.2,.9,.2,1);
+    }
+
+    @keyframes drop {
+      from { transform: translateY(-12px); opacity:0; }
+      to   { transform: translateY(0);    opacity:1; }
+    }
+
+    .logo {
+      display:flex;
+      align-items:center;
+      gap:12px;
+      margin-bottom:18px;
+    }
+
+    .logo .dot{
+      width:44px;height:44px;border-radius:10px;
+      background: linear-gradient(135deg,var(--accent), #28a3ff);
+      box-shadow: 0 6px 18px rgba(30,144,255,0.25);
+      display:inline-block;
+    }
+
+    .login-card h2{
+      font-size:20px;
+      margin:0;
+      font-weight:700;
+      color:#fff;
+    }
+
+    .login-card p.lead {
+      font-size:13px;
+      color: rgba(255,255,255,0.85);
+      margin-top:6px;
+      margin-bottom:16px;
+    }
+
+    /* form */
+    form {
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+    }
+
+    .field {
+      position:relative;
+    }
+
+    input[type="text"], input[type="password"]{
+      width:100%;
+      padding:12px 14px;
+      border-radius:10px;
+      border:1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.04);
+      color: #fff;
+      outline:none;
+      font-size:15px;
+      transition: all 180ms ease;
+      box-shadow: inset 0 -1px 0 rgba(0,0,0,0.2);
+    }
+
+    input::placeholder { color: rgba(255,255,255,0.55); }
+
+    input:focus{
+      border-color: rgba(255,255,255,0.28);
+      transform: translateY(-1px);
+      box-shadow: 0 6px 18px rgba(30,144,255,0.12);
+    }
+
+    .btn {
+      margin-top:6px;
+      padding:11px 14px;
+      border-radius:10px;
+      border:none;
+      background: linear-gradient(90deg,var(--accent), #28a3ff);
+      color:#fff;
+      font-weight:700;
+      cursor:pointer;
+      box-shadow: 0 8px 20px rgba(30,144,255,0.18);
+      transition: transform 120ms ease, box-shadow 120ms ease;
+    }
+
+    .btn:active { transform: translateY(1px); }
+    .btn:disabled { opacity:0.6; cursor:not-allowed; }
+
+    .info-row {
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      margin-top:10px;
+      font-size:13px;
+      color: rgba(255,255,255,0.8);
+    }
+
+    .small-link { color: rgba(255,255,255,0.85); text-decoration:none; }
+    .small-link:hover { text-decoration:underline; }
+
+    /* responsive */
+    @media (max-width:420px){
+      .login-card { width: 94%; padding:20px; }
+      .logo .dot { width:40px; height:40px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="bg-overlay" aria-hidden="true"></div>
+
+  <div class="login-card" role="region" aria-label="Login form">
+    <div class="logo">
+      <img src="./images/logo.webp" style="width: 48px;height: 48px;object-fit: contain; border-radius: 8px;  box-shadow: 0 3px 8px rgba(0,0,0,0.25);">
+      <div>
+        <h2>Hospital Management</h2>
+        <div class="lead">Sign in to continue</div>
+      </div>
+    </div>
+
+    <form id="loginForm" onsubmit="event.preventDefault(); login();">
+      <div class="field">
+        <label for="Email" class="sr-only" style="position:absolute;left:-9999px;">Email</label>
+        <input id="Email" name="Email" type="text" placeholder="Email" autocomplete="Email" required />
+      </div>
+
+      <div class="field">
+        <label for="password" class="sr-only" style="position:absolute;left:-9999px;">Password</label>
+        <input id="password" name="password" type="password" placeholder="Password" autocomplete="current-password" required />
+      </div>
+
+      <button class="btn" id="loginBtn" type="submit">Login</button>
+
+      <div class="info-row">
+        <small></small>
+        <a href="#" class="small-link" onclick="alert('Contact admin to reset password')">Forgot?</a>
+      </div>
+    </form>
+  </div>
+
+  <script>
+    function login() {
+      const Email = document.getElementById("Email").value.trim();
+      const password = document.getElementById("password").value;
+
+      if (!Email || !password) {
+        alert("Please enter Email and password");
+        return;
+      }
+
+      // simple demo credentials (change in production)
+      if (Email === "pritha@gmail.com" && password === "admin123") {
+        // set sessionStorage so home.html can show the popup ONCE
+        sessionStorage.setItem("loggedIn", "true");
+        sessionStorage.setItem("showLoginPopup", "true");
+
+        // optional: small visual feedback before redirect
+        const btn = document.getElementById("loginBtn");
+        btn.disabled = true;
+        btn.textContent = "Signing in...";
+
+        // redirect after tiny delay for UX
+        setTimeout(() => {
+          window.location.href = "home.html";
+        }, 700);
+      } else {
+        alert("Invalid credentials");
+      }
+    }
+  </script>
+</body>
+</html>

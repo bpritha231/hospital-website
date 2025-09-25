@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Contact - Hospital</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+  /* Navbar links hover */
+  #navbar a {
+    transition: all 0.3s ease;
+    border-radius: 8px;
+    padding: 6px 12px;
+  }
+
+  #navbar a:hover {
+    background: rgba(255, 255, 255, 0.25); /* subtle light overlay */
+    color: #fff; /* keep text white */
+    transform: scale(1.1); /* slight zoom */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  }
+</style>
+</head>
+
+<body>
+ <nav id="navbar" style="
+  display:flex; 
+  align-items:center; 
+  justify-content:space-between; 
+  padding:14px 28px; 
+  position:sticky; 
+  top:0; 
+  z-index:1000;
+  background: linear-gradient(90deg, #8e2de2, #ff416c); /* default gradient */
+  border-radius: 14px;
+  transition: all 0.4s ease;
+">
+  <div style="display:flex;align-items:center;gap:12px;">
+    <img src="./images/logo.webp" style="width:48px;height:48px;object-fit:contain;border-radius:8px;box-shadow:0 3px 8px rgba(0,0,0,0.25);">
+    <span style="font-weight:bold;color:rgb(245, 242, 242);font-size:20px;"> 𝕿𝖗𝖚𝖘𝖙 𝖍𝖊𝖆𝖑𝖎𝖓𝖌</span>
+  </div>
+  <div style="display:flex;gap:20px;">
+    <a href="home.html" style="color:white;text-decoration:none;">Home</a>
+    <a href="appoinment.html" style="color:white;text-decoration:none;">Appointment</a>
+    <a href="doctors.html" style="color:white;text-decoration:none;">Doctors</a>
+    <a href="departments.html" style="color:white;text-decoration:none;">Departments</a>
+    <a href="about.html" style="color:white;text-decoration:none;">About</a>
+    <a href="contact.html" style="color:white;text-decoration:none;">Contact</a>
+  </div>
+</nav>
+
+<script>
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    if(window.scrollY > 50){
+      navbar.style.backdropFilter = 'blur(12px) saturate(160%)';
+      navbar.style.webkitBackdropFilter = 'blur(12px) saturate(160%)';
+      navbar.style.background = 'linear-gradient(90deg, rgba(50,0,80,0.55), rgba(120,0,80,0.45), rgba(255,120,50,0.35))';
+      navbar.style.border = '1px solid rgba(255,255,255,0.18)';
+      navbar.style.boxShadow = '0 8px 28px rgba(0,0,0,0.35)';
+    } else {
+      navbar.style.backdropFilter = '';
+      navbar.style.webkitBackdropFilter = '';
+      navbar.style.background = 'linear-gradient(90deg, #8e2de2, #ff416c)'; // original gradient
+      navbar.style.border = '';
+      navbar.style.boxShadow = '';
+    }
+  });
+</script>
+
+
+ 
+    <!-- Departments Section -->
+    <div class="departments">
+        <h2>Our Departments</h2>
+        <div class="dept-grid">
+            <div class="dept-card">
+                <img src="./images/cardiology img.jpeg" alt="Cardiology">
+                <h3>Cardiology</h3>
+                <p>Expert care for all your heart problems.</p>
+            </div>
+            <div class="dept-card">
+                <img src="./images/Neurology.jpeg" alt="Neurology">
+                <h3>Neurology</h3>
+                <p>Advanced treatment for brain & nerves.</p>
+            </div>
+            <div class="dept-card">
+                <img src="./images/Pediatrics.jpeg" alt="Pediatrics">
+                <h3>Pediatrics</h3>
+                <p>Complete care for children's health.</p>
+            </div>
+            <div class="dept-card">
+                <img src="./images/Surgery.jpeg" alt="Surgery">
+                <h3>Surgery</h3>
+                <p>Safe and precise surgical procedures.</p>
+            </div>
+            <div class="dept-card">
+                <img src="./images/Orthopedics.jpeg" alt="Orthopedics">
+                <h3>Orthopedics</h3>
+                <p>Treatment for bones & joint issues.</p>
+            </div>
+            <div class="dept-card">
+                <img src="./images/dermatology.jpeg" alt="Dermatology">
+                <h3>Dermatology</h3>
+                <p>Solutions for healthy & glowing skin.</p>
+            </div>
+            <div class="dept-card">
+                <img src="./images/ophalmology.jpeg" alt="Dermatology">
+                <h3>ophalmology</h3>
+                <p>Solutions for Eye care.</p>
+            </div>
+            <div class="dept-card">
+                <img src="./images/Gastroenterology.jpeg" alt="Dermatology">
+                <h3>Gastroenterology</h3>
+                <p>Solutions for digestive problems.</p>
+            </div>
+            <div class="dept-card">
+                <img src="./images/Physiotherapy.jpeg" alt="Dermatology">
+                <h3>Physiotherapy</h3>
+                <p> Treatment for Physiotherapy</p>
+            </div>
+            <div class="dept-card">
+                <img src="./images/oncology.jpeg" alt="Dermatology">
+                <h3>oncology</h3>
+                <p> cancer Treatment</p>
+            </div>
+            <div class="dept-card">
+                <img src="./images/Radiology.jpeg" alt="Dermatology">
+                <h3>x-rays</h3>
+                <p> All type of scan and x-rays</p>
+            </div>
+        </div>
+    </div>
+ <!-- Footer Section -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2025 Hospital Management. All rights reserved.</p>
+            
+        </div>
+    </footer>
+</body>
+
+</html>
